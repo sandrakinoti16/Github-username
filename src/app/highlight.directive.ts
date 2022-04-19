@@ -5,6 +5,7 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 })
 export class HighlightDirective {
   null!: string;
+  static ts: any;
 
   constructor(private el: ElementRef) {}
 
