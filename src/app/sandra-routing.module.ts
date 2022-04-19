@@ -13,7 +13,7 @@ import { DatePipePipe } from './date-pipe.pipe';
 @NgModule({
   declarations: [
     AppComponent,
-    ProfileComponent,
+    // ProfileComponent,
     HighlightDirective,
     DatePipePipe,
   ],
@@ -26,4 +26,4 @@ import { DatePipePipe } from './date-pipe.pipe';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class sandraroutingModule { }

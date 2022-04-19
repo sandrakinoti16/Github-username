@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
     console.log(this.profile + "now")
 
 
-    this.profileService.getRepos().then(repos=>{
+    this.profileService.getRepos().then((repos: any)=>{
       this.repos = repos
     })
   }
@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit {
     console.log(this.profile + "now")
 
 
-    this.profileService.getRepos().then(repos=>{
+    this.profileService.getRepos().then((repos: any)=>{
       this.repos = repos
     })
 
