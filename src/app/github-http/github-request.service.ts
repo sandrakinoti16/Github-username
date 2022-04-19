@@ -7,7 +7,7 @@ import { User} from '../user-class/user';
   providedIn: 'root'
 })
 export class GithubRequestService {
-  [x: string]: string;
+  
   user: User;
   
 
@@ -23,9 +23,9 @@ export class GithubRequestService {
       
 }
 let  promise = new Promise((resolve, reject)=>{
-  return this.http.get<ApiResponse>('https://api.github.com/users/' + this['username']).toPromise().then(response=>{
+  this.http.get<ApiResponse>(environment.apiUrl).toPromise().then(response=>{ 
     this.user.user = response
-    this.user.id = response
+    this.user.user=response
     this.user.avatar_url = response
     console.log(response)
 
