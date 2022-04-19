@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ProfileService } from '../profile-services/profile.service';
 import { User } from '../user-class/user';
-import { GithubRequestService } from '../github-http/github-request.service';
+/*import { profile } from 'console';*/
 
 @Component({
   selector: 'app-profile',
@@ -9,29 +9,35 @@ import { GithubRequestService } from '../github-http/github-request.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  user: User[] = [];
-  constructor(github: any,GithubRequestService: { getUser: () => User[]; },private http: { get: (arg0: string) => { (): any; new(): any; subscribe: { (arg0: (data: { login: any; id: any; avatar_url: any; }) => void): void; new(): any; }; }; } ;: HttpClient: any) { 
-    this.user = GithubRequestService.getUser()
-  
+  profile!: User;
+  repos: any;
+  username: string;
+
+  constructor( private profileService: ProfileService) {
+    this.username = "sandrakinoti16";
   }
 
-  ngOnInit() {
+  findProfile() {
+    this.profileService.updateName(this.username);
+    this.profileService.getUsers()
+    this.profile = this.profileService.user;
+    console.log(this.profile + "now")
 
-    interface ApiResponse{
-      login:string;
-      id:string;
-      avatar_url:string
-    }
 
-    this.http.get<ApiResponse>("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").subscribe((data: { login: any; id: any; avatar_url: any})=>{
-      // Succesful API request
-      this.user = new User(data.login, data.id,data.avatar_url)
+    this.profileService.getRepos().then(repos=>{
+      this.repos = repos
     })
   }
 
-}
+  ngOnInit() {
+    this.profileService.getUsers()
+    this.profile = this.profileService.user;
+    console.log(this.profile + "now")
 
 
-function ngOnInit() {
-  throw new Error('Function not implemented.');
+    this.profileService.getRepos().then(repos=>{
+      this.repos = repos
+    })
+
+  }
 }
