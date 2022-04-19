@@ -9,7 +9,7 @@ import {User} from  '../user-class/user';
 export class ProfileService {
   user: User
   repos:any;
-  username = 'Wambuilucy';
+  username = 'sandrakinoti16';
   searchname = "tetris";
 
   constructor(private http: HttpClient) { 
