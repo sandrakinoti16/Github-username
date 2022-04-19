@@ -1,29 +1,25 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { Routes, RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
-import { HighlightDirective } from './highlight.directive';
-import { DatePipePipe } from './date-pipe.pipe';
+import { Repo } from './repo-class/repo';
+
+
+const routes: Routes = [
+  {path: '', component:ProfileComponent},
+  {path: 'profile', component:ProfileComponent},
+  {path: 'repo', component:Repo}
+ 
+
+];
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ProfileComponent,
-    HighlightDirective,
-    DatePipePipe,
-  ],
+  declarations: [],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
+    CommonModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  exports: [RouterModule]
 })
-export class AppModule { }
+export class sandraRoutingModule { }
