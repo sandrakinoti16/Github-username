@@ -36,7 +36,7 @@ This is a website that allows users to search for a Github username and repo and
 ## Contact Information 📱
 
 If you have any question or contributions, please email me at [sandrakinya6@gmail.com]
-e
+
 ## License
 * *MIT License:*
 * Copyright (c) 2022 **sandra Kinoti **
