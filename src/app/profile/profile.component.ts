@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../user-class/user';
-import { AlternativeServiceOptions } from 'http2';
 import { GithubRequestService } from '../github-http/github-request.service';
 
 @Component({
@@ -11,12 +10,9 @@ import { GithubRequestService } from '../github-http/github-request.service';
 })
 export class ProfileComponent implements OnInit {
   user: User[] = [];
-  alertService:AlertService ;
-  user : User
-
-  constructor(github: any-GithubRequestService, alertService ,private http : HttpClient) { 
+  constructor(github: any,GithubRequestService: { getUser: () => User[]; },private http: { get: (arg0: string) => { (): any; new(): any; subscribe: { (arg0: (data: { login: any; id: any; avatar_url: any; }) => void): void; new(): any; }; }; } ;: HttpClient: any) { 
     this.user = GithubRequestService.getUser()
-    this.alertService =alertService ;
+  
   }
 
   ngOnInit() {
