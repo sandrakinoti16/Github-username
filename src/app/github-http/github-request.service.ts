@@ -7,6 +7,9 @@ import { User} from '../user-class/user';
   providedIn: 'root'
 })
 export class GithubRequestService {
+  static getUser(): any {
+    throw new Error('Method not implemented.');
+  }
   
   user: User;
   
