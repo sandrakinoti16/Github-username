@@ -4,6 +4,7 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
   selector: '[appHighlight]'
 })
 export class HighlightDirective {
+  null!: string;
 
   constructor(private el: ElementRef) {}
 
@@ -11,8 +12,10 @@ export class HighlightDirective {
     this.highlight('teal');
   }
 
+  private readonly newProperty = null;
+
   @HostListener('mouseleave') onMouseLeave() {
-    this.highlight(null);
+    this.highlight(this.null);
   }
 
   private highlight(color: string) {
