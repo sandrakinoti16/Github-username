@@ -1,4 +1,12 @@
 <p routerLink="profile">profile works!</p>
 <div class="container">
-    <router-outlet></router-outlet>
+   {{profile.login}}
+   {{profile.id}}
+   <img src="{{profile.avatar_url}}" alt="" srcset="">
   </div>
+  <div *ngFor="let repositorydetail of repositorydetails ">
+   {{repositorydetail.name}}
+  {{repositorydetail.language}}
+  {{repositorydetail.clone_url}}
+  </div>
+

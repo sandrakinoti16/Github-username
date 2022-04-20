@@ -1,3 +1,3 @@
 export class Repo {
-    constructor(public login:string, public id:number, public avatar_url:string){}
+    constructor(public name:string, public language:string, public clone_url:string){}
 }

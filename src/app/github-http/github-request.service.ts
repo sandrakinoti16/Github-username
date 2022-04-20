@@ -8,7 +8,9 @@ import { Repo } from '../repo-class/repo';
   providedIn: 'root'
 })
 export class GithubRequestService {
-  getUsers: any;
+  // getUsers: any;
+  newuser:any=[]
+  repositorydata:any=[]
   updateName: any;
   static getUser(): any {
     throw new Error('Method not implemented.');
@@ -21,17 +23,17 @@ export class GithubRequestService {
   constructor(private http:HttpClient) {
     this.user = new User("",0,"");
     this.http = http
-    this.repo = new Repo ("",0,"")
+    this.repo = new Repo ("","","")
    }
-   userRequest(){
+   userRequest(Username:string){
     interface ApiResponse{
        login:string;
        id:number;
       avatar_url:string
       
 }
-let  promise = new Promise((resolve, reject)=>{
-  this.http.get<ApiResponse>(environment.apikey).toPromise().then((response:any)=>{ 
+let  promise = new Promise<void>((resolve, reject)=>{
+  this.http.get<ApiResponse>("https://api.github.com/users/"+Username).toPromise().then((response:any)=>{ 
     this.user.id = response.id
     this.user.login=response.login
     this.user.avatar_url = response.avatar_url
@@ -48,6 +50,12 @@ let  promise = new Promise((resolve, reject)=>{
     reject(error)
 
   })
+  this.http.get<any>("https://api.github.com/users/"+Username+"/repos").toPromise().then((response)=>{ 
+for(let i=0;i<response.length;i++){
+this.newuser=new Repo(response[i].name,response[i].language ,response[i].clone_url)
+this.repositorydata.push(this.newuser)
+}resolve()
+  },error=>{reject(error)})
 })
 return promise
 }

@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { sandraroutingModule } from './sandra-routing.module';
 import { AppComponent } from './app.component';
 import { FormComponent } from './form/form.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -18,7 +19,7 @@ import { FormComponent } from './form/form.component';
   declarations: [ProfileComponent,HighlightDirective,DatePipePipe,AppComponent, FormComponent],
   imports: [
     CommonModule,
-   
+   FormsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
