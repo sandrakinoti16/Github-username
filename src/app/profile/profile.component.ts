@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../profile-services/profile.service';
 import { User } from '../user-class/user';
+import { GithubRequestService } from '../github-http/github-request.service';
 /*import { profile } from 'console';*/
 
 @Component({
@@ -9,35 +10,38 @@ import { User } from '../user-class/user';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  profile!: User;
+  profile: User | undefined;
   repos: any;
-  username: string;
+  user: string;
+  githubhttp: any
+  hideInput: boolean = false;
 
-  constructor( private profileService: ProfileService) {
-    this.username = "sandrakinoti16";
+  constructor( private GithubRequestService: GithubRequestService) {
+    this.user = "sandrakinoti16";
   }
+  
 
   findProfile() {
-    this.profileService.updateName(this.username);
-    this.profileService.getUsers()
-    this.profile = this.profileService.user;
+    this.GithubRequestService.updateName(this.user);
+    this.GithubRequestService.getUsers()
+    this.profile = this.GithubRequestService.user;
     console.log(this.profile + "now")
 
 
-    this.profileService.getRepos().then((repos: any)=>{
-      this.repos = repos
-    })
+    // this.profileService.getRepos().then((repos: any)=>{
+    //   this.repos = repos
+    // })
   }
 
   ngOnInit() {
-    this.profileService.getUsers()
-    this.profile = this.profileService.user;
+    this.GithubRequestService.getUsers()
+    this.profile= this.GithubRequestService.user;
     console.log(this.profile + "now")
 
 
-    this.profileService.getRepos().then((repos: any)=>{
-      this.repos = repos
-    })
+    // this.profileService.getRepos().then((repos: any)=>{
+    //   this.repos = repos
+    // })
 
   }
 }
