@@ -1,2 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-body{background-image:url(../src/assets/images.png);background-size:cover;}
+body{background-image:url(../src/assets/images2.jpeg);background-size:cover;
+display: flex;
+flex-direction: column;
+justify-content: left;
+align-items: left;
+margin-bottom: 25%;
+}
